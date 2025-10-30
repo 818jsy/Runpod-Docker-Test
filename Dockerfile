@@ -4,7 +4,7 @@
 FROM runpod/worker-comfyui:5.1.0-base AS base
 
 # 필요한 커스텀 노드 설치
-RUN comfy-node-install comfyui-kjnodes comfyui-ic-light comfyui_ipadapter_plus comfyui_essentials ComfyUI-Hangover-Nodes
+# RUN comfy-node-install comfyui-kjnodes comfyui-ic-light comfyui_ipadapter_plus comfyui_essentials ComfyUI-Hangover-Nodes
 
 # 추가 설정
 WORKDIR /comfyui
