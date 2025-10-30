@@ -1,4 +1,4 @@
-# -----------------------
+ㅊ# -----------------------
 # Stage 1: Base (공통 환경)
 # -----------------------
 FROM runpod/worker-comfyui:5.1.0-base AS base
@@ -10,6 +10,10 @@ FROM runpod/worker-comfyui:5.1.0-base AS base
 WORKDIR /comfyui
 ADD src/extra_model_paths.yaml ./
 WORKDIR /
+
+# Add application code and scripts
+ADD src/start.sh handler.py ./
+RUN chmod +x /start.sh
 
 # -----------------------
 # Stage 2: Downloader (모델 다운로드 전용 단계)
@@ -26,3 +30,4 @@ FROM base AS final
 
 # Stage 2에서 받은 모델 복사
 COPY --from=downloader /comfyui/models /comfyui/models
+
